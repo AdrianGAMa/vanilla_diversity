@@ -72,15 +72,15 @@ datregws <- read.table("pest_ndW.txt", header = T)
 popindws <- data.frame(datindws$code, datpopws$pop, datregws$pop)
 
 ##Building the new data frame for the poblational structure (From Admixture haha)
-K6Ws <- read.table("wildans2.6.Q")
-K6Ws$ind <- popindws$datindws.code
-K6Ws$pop <- popindws$datpopws.pop
-K6Ws$reg <- popindws$datregws.pop
-K6fWs <- melt(K6Ws)
+K10Ws <- read.table("wildans2.10.Q")
+K10Ws$ind <- popindws$datindws.code
+K10Ws$pop <- popindws$datpopws.pop
+K10Ws$reg <- popindws$datregws.pop
+K10fWs <- melt(K10Ws)
 
-regwsplot <- ggplot(K6fWs, aes(factor(ind), value, fill = factor(variable)))+geom_bar(stat="identity")+facet_grid(~fct_inorder(reg), scales = "free", switch = "x", space = "free")+theme_minimal()+theme(axis.text.x=element_text(size=8,angle=45,hjust=1),axis.text.y=element_text(size=10),legend.position="none",axis.title.x=element_blank(),axis.title.y=element_text(size=11),strip.text.x=element_text(size=11))
+regwsplot <- ggplot(K10fWs, aes(factor(ind), value, fill = factor(variable)))+geom_bar(stat="identity")+facet_grid(~fct_inorder(reg), scales = "free", switch = "x", space = "free")+theme_minimal()+theme(axis.text.x=element_text(size=8,angle=45,hjust=1),axis.text.y=element_text(size=10),legend.position="none",axis.title.x=element_blank(),axis.title.y=element_text(size=11),strip.text.x=element_text(size=11))
 
-popwsplot <- ggplot(K6fWs, aes(factor(ind), value, fill = factor(variable)))+geom_bar(stat="identity")+facet_grid(~fct_inorder(pop), scales = "free", switch = "x", space = "free")+theme_minimal()+theme(axis.text.x=element_text(size=8,angle=45,hjust=1),axis.text.y=element_text(size=10),legend.position="none",axis.title.x=element_blank(),axis.title.y=element_text(size=11),strip.text.x=element_text(size=11))
+popwsplot <- ggplot(K10fWs, aes(factor(ind), value, fill = factor(variable)))+geom_bar(stat="identity")+facet_grid(~fct_inorder(pop), scales = "free", switch = "x", space = "free")+theme_minimal()+theme(axis.text.x=element_text(size=8,angle=45,hjust=1),axis.text.y=element_text(size=10),legend.position="none",axis.title.x=element_blank(),axis.title.y=element_text(size=11),strip.text.x=element_text(size=11))
 
 png(filename="struc6vp.png", width=1080, height=720)
 
